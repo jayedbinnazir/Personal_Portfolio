@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Skill</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Add New Skill</h1>
+        <form action="/api/v1/skill/add" method="POST" enctype="multipart/form-data" class="needs-validation"
+            novalidate>
+            <div class="row mb-3">
+                <!-- Skill Title -->
+                <div class="col-md-6">
+                    <label for="title" class="form-label">Skill Title</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter skill title"
+                        required>
+                    <div class="invalid-feedback">Please provide a skill title.</div>
+                </div>
+
+                <!-- Proficiency (1-100) -->
+                <div class="col-md-6">
+                    <label for="proficiency" class="form-label">Proficiency (1-100)</label>
+                    <input type="number" class="form-control" id="proficiency" name="proficiency"
+                        placeholder="Enter proficiency level" min="1" max="100" required>
+                    <div class="invalid-feedback">Please provide a valid proficiency level between 1 and 100.</div>
+                </div>
+            </div>
+
+            <!-- SVG Upload -->
+            <div class="mb-3">
+                <label for="svg" class="form-label">Upload SVG</label>
+                <input type="file" class="form-control" id="svg" name="svg" accept=".svg" required>
+                <div class="invalid-feedback">Please upload an SVG file.</div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Submit Skill</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Form Validation Script -->
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict';
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+</body>
+
+</html>

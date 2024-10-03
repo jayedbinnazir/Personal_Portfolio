@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Application Form</title>
+</head>
+
+<body>
+    <h1>Software Application Form</h1>
+
+    <form action="http://localhost:4000/api/v1/softwareapplication/add" method="POST" enctype="multipart/form-data">
+        <!-- Name field -->
+        <div>
+            <label for="name">Application Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <!-- SVG upload field -->
+        <div>
+            <label for="svg">Upload SVG:</label>
+            <input type="file" id="svg" name="svg" accept=".svg" required>
+        </div>
+
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+
+</html>
