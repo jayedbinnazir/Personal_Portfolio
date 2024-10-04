@@ -9,20 +9,18 @@ import Portfolio from "./miniComponents/Portfolio";
 import Contact from "./miniComponents/Contact";
 import axios from "axios";
 
-
 export const ProfileContext = React.createContext(null);
 
-
 const Home = () => {
-    const [user, setUser] = useState({});
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const getMyProfile = async () => {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_APP_URL}/api/v1/user/me`,
+        `${import.meta.env.VITE_APP_URL}/api/v1/user/portfolio/me`,
         { withCredentials: true }
       );
-      console.log(data.user)
+      console.log(data.user);
       setUser(data.user);
     };
     getMyProfile();
@@ -30,14 +28,14 @@ const Home = () => {
 
   return (
     <article className="px-5 mt-10 sm:mt-14 md:mt-16 lg:mt-24 xl:mt-32 sm:mx-auto w-full max-w-[1050px] flex flex-col gap-14">
-      <ProfileContext.Provider value={user} >
-      <Hero />
-      <Timeline />
-      <About />
-      <Skills />
-      <Portfolio />
-      <MyApps />
-      <Contact />
+      <ProfileContext.Provider value={user}>
+        <Hero />
+        <Timeline />
+        <About />
+        <Skills />
+        <Portfolio />
+        <MyApps />
+        <Contact />
       </ProfileContext.Provider>
     </article>
   );
