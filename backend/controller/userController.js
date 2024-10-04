@@ -98,7 +98,7 @@ export const logout = catchAsyncErrors(async (req, res, next) => {
       httpOnly: true,
       expires: new Date(Date.now()),
       secure: process.env.NODE_ENV === "production" ? true : false, // Use secure cookies in production
-      sameSite: "Lax", // Prevent CSRF attacks
+      sameSite: "None", // Prevent CSRF attacks
     })
     .json({
       success: true,
