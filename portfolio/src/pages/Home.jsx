@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Portfolio from "./miniComponents/Portfolio";
 import Contact from "./miniComponents/Contact";
 import axios from "axios";
+import { ClipLoader } from "react-spinners"; // Import a spinner from react-spinners
 
 export const ProfileContext = React.createContext(null);
 
@@ -17,19 +18,27 @@ const Home = () => {
 
   useEffect(() => {
     const getMyProfile = async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_APP_URL}/api/v1/user/portfolio/me`,
-        { withCredentials: true }
-      );
-      console.log(data.user);
-      setUser(data.user);
-      setLoading(false);
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_APP_URL}/api/v1/user/portfolio/me`,
+          { withCredentials: true }
+        );
+        setUser(data.user);
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      } finally {
+        setLoading(false);
+      }
     };
     getMyProfile();
-  }, [user, setUser, loading, setLoading]);
+  }, []);
 
   if (loading) {
-    return <h1>Loading .... </h1>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <ClipLoader color={"#123abc"} loading={loading} size={150} />
+      </div>
+    );
   }
 
   return (
