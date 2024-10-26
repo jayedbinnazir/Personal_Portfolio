@@ -13,6 +13,7 @@ export const ProfileContext = React.createContext(null);
 
 const Home = () => {
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getMyProfile = async () => {
@@ -22,12 +23,13 @@ const Home = () => {
       );
       console.log(data.user);
       setUser(data.user);
+      setLoading(false);
     };
     getMyProfile();
-  }, []);
+  }, [user, setUser, loading, setLoading]);
 
-  if (!user) {
-    return <h1>...Loading</h1>;
+  if (loading) {
+    return <h1>Loading .... </h1>;
   }
 
   return (
