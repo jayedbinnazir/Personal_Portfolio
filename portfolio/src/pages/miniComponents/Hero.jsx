@@ -30,7 +30,7 @@ const Hero = () => {
 
         <div className="flex items-center gap-2">
           <span className="bg-green-400 rounded-full h-4 w-4"></span>
-          <p className="text-[1.5rem]">Online</p>
+          <p className="text-[1.5rem]">Open for hiring</p>
         </div>
       </div>
 
