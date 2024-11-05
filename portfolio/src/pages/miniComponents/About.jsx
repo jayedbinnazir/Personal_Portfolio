@@ -1,10 +1,9 @@
-import  { useContext } from "react";
+import { useContext } from "react";
 import { ProfileContext } from "../Home";
 
 const About = () => {
-
   const user = useContext(ProfileContext);
-  console.log("user",user)
+  console.log("user", user);
   return (
     <div className="w-full flex flex-col overflow-x-hidden">
       <div className="relative">
@@ -35,13 +34,11 @@ const About = () => {
             />
           </div>
           <div className="flex justify-center flex-col tracking-[1px] text-xl gap-5">
+            <p>{user?.aboutMe}</p>
             <p>
-              {user?.aboutMe}
-            </p>
-            <p>
-              I have interests not only in technology but also in movies,
-              series, video games, and cooking. I excel in meeting deadlines for
-              my work.
+              I have interests not only in technology but also in Travelling,
+              movies, series, video games, and cooking. I excel in meeting
+              deadlines for my work.
             </p>
           </div>
         </div>
