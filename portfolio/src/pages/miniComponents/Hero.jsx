@@ -83,7 +83,7 @@ const Hero = () => {
             <span>
               <ExternalLink />
             </span>
-            <span>Resume</span>
+            <span>CV / Resume</span>
           </Button>
         </Link>
       </div>
